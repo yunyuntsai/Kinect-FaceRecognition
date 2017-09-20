@@ -1,0 +1,51 @@
+﻿<Window x:Class="Microsoft.Samples.Kinect.ColorBasics.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Microsoft.Samples.Kinect.ColorBasics"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Title="Window1" Height="600" Width="700">
+    <Window.Resources>
+        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e" />
+        <SolidColorBrush x:Key="Azure" Color="Azure" />
+        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
+        <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="Auto" />
+
+            <RowDefinition Height="*" />
+
+            <RowDefinition Height="Auto" />
+
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" HorizontalAlignment="Left" Source="Images\microsoft.PNG" Stretch="Uniform" Height="40" Width="100" Margin="0,10,0,5" VerticalAlignment="Top" />
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="120,0,0,10" VerticalAlignment="Bottom" FontFamily="Segoe UI"  FontStyle="Normal" FontSize="24" >IoT Center</TextBlock>
+        <Image Grid.Row="0" Source="Images\Status.png" Stretch="None" HorizontalAlignment="Center"/>
+
+        <Viewbox Grid.Row="1" HorizontalAlignment="left" VerticalAlignment="Top" Width="600" Height="500" Margin="20,20,20,20">
+            <Image  
+                   x:Name="PhotoShot_Screen1" 
+                   Visibility="Visible"  
+                   Stretch="UniformToFill" />
+        </Viewbox>
+        
+        <Viewbox Grid.Row="1" HorizontalAlignment="left" VerticalAlignment="Top" Width="200" Height="200" Margin="220,20,20,20"  >
+            <Image x:Name="PhotoShot_Screen2"                                                    
+                   Visibility="Visible"  
+                   Stretch="UniformToFill" />
+        </Viewbox>
+
+        <TextBlock Text="{Binding IdentifyState1, StringFormat='None'}" Grid.Row="1" Margin="20,10,10,10" HorizontalAlignment="Left" Foreground="{StaticResource KinectPurpleBrush}" FontFamily="Segoe UI" FontSize="24" FontStyle="Italic" Width="200" Height="50"/>
+        <TextBlock Text="{Binding IdentifyState2, StringFormat='None'}" Grid.Row="1" Margin="220,10,10,10" HorizontalAlignment="Left" Foreground="{StaticResource KinectPurpleBrush}" FontFamily="Segoe UI" FontSize="24" FontStyle="Italic" Width="200" Height="50"/>
+
+
+    </Grid>
+    
+</Window>

@@ -1,0 +1,234 @@
+﻿<Window x:Class="Microsoft.Samples.Kinect.ColorBasics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        Title="Color Basics" 
+        Height="600" Width="700" 
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Closing="MainWindow_Closing">
+    <Window.Resources>
+        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e" />
+        <SolidColorBrush x:Key="Azure" Color="Azure" />
+        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
+        <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
+        <Style TargetType="{x:Type Image}">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="ScreenshotButton" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" Background="Transparent">
+                                <Grid Margin="9,0,0,0">
+                                    <Image x:Name="ScreenshotNormal" Source="Images\login.png" Stretch="UniformToFill" Width="100" HorizontalAlignment="Center"  Margin="10,0,10,0"  />
+                                    <Image x:Name="ScreenshotHover" Source="Images\login2.png" Stretch="UniformToFill" Width="100" HorizontalAlignment="Center" Visibility="Collapsed"  Margin="10,0,10,0"  />
+                                </Grid>
+                                <TextBlock x:Name="ScreenshotText" Text="{TemplateBinding Content}" TextAlignment="Left"  VerticalAlignment="Center" Foreground="{StaticResource KinectPurpleBrush}" FontSize="36" />
+
+                            </StackPanel>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Visibility" Value="Collapsed" TargetName="ScreenshotNormal" />
+                                <Setter Property="Visibility" Value="Visible" TargetName="ScreenshotHover" />
+                                <Setter Property="Foreground" Value="{StaticResource KinectBlueBrush}" TargetName="ScreenshotText" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="RetryButton" >
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <Grid>
+
+                            <StackPanel Orientation="Horizontal" Background="Transparent">
+
+
+
+                                <Grid Margin="9,0,0,0">
+
+                                    <Image x:Name="RetryNormal" Source="Images\start1.png" Stretch="UniformToFill" Width="90" HorizontalAlignment="Center" Margin="0,10,0,0"  />
+
+                                    <Image x:Name="RetryHover" Source="Images\start2.png" Stretch="UniformToFill" Width="90" HorizontalAlignment="Center" Visibility="Collapsed" Margin="0,10,0,0" />
+
+                                </Grid>
+
+                                <TextBlock x:Name="RetryText" Text="{TemplateBinding Content}" TextAlignment="Right"  VerticalAlignment="Center" Foreground="{StaticResource KinectPurpleBrush}" FontSize="36" />
+
+                            </StackPanel>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="true">
+
+                                <Setter Property="Visibility" Value="Collapsed" TargetName="RetryNormal" />
+
+                                <Setter Property="Visibility" Value="Visible" TargetName="RetryHover" />
+
+                                <Setter Property="Foreground" Value="{StaticResource KinectBlueBrush}" TargetName="RetryText" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+        </Style>
+
+
+        <Style TargetType="{x:Type Button}" x:Key="CheckButton" >
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <Grid>
+
+                            <StackPanel Orientation="Horizontal" Background="Transparent">
+
+
+
+                                <Grid Margin="9,0,0,0">
+
+                                    <Image x:Name="CheckNormal" Source="Images\lock.png" Stretch="UniformToFill" Width="30" HorizontalAlignment="Center"  />
+
+                                    <Image x:Name="CheckHover" Source="Images\lock.png" Stretch="UniformToFill" Width="30" HorizontalAlignment="Center" Visibility="Collapsed" />
+
+                                </Grid>
+
+                                <TextBlock x:Name="CheckText" Text="{TemplateBinding Content}" TextAlignment="Right"  VerticalAlignment="Center" Foreground="{StaticResource KinectPurpleBrush}" FontSize="18" />
+
+                            </StackPanel>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="true">
+
+                                <Setter Property="Visibility" Value="Collapsed" TargetName="CheckNormal" />
+
+                                <Setter Property="Visibility" Value="Visible" TargetName="CheckHover" />
+
+                                <Setter Property="Foreground" Value="{StaticResource KinectBlueBrush}" TargetName="CheckText" />
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Margin="10 0 10 0" >
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="Auto" />
+
+            <RowDefinition Height="*" />
+
+            <RowDefinition Height="Auto" />
+
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" HorizontalAlignment="Left" Source="Images\microsoft.PNG" Stretch="Uniform" Height="40" Width="100" Margin="0,10,0,5" VerticalAlignment="Top" />
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="120,0,0,10" VerticalAlignment="Bottom" FontFamily="Segoe UI" Foreground="{StaticResource MediumGreyBrush}" FontStyle="Normal" FontSize="24" >IoT Center</TextBlock>
+        <Image Grid.Row="0" Source="Images\Status.png" Stretch="None" HorizontalAlignment="Center"/>
+
+
+
+        <Viewbox Grid.Row="1" HorizontalAlignment="Center">
+
+            <Image x:Name="DefaultScreen" Source="{Binding ImageSource}" Stretch="UniformToFill" />
+
+        </Viewbox>
+
+        <Viewbox Grid.Row="1" HorizontalAlignment="Center"  >
+            <Image x:Name="BackGround_Screen"                                                    
+                   Source="Images/Slide11.JPG"
+                   Visibility="Collapsed"  
+                   Stretch="UniformToFill" />
+        </Viewbox>
+
+
+        <Viewbox Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Grid Margin="0,30,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="badge_Screen"                                                   
+                   Source="Images/badge3.PNG"
+                   Visibility="Collapsed" Grid.RowSpan="4"/>
+            </Grid>
+        </Viewbox>
+
+        <Viewbox Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Top" >
+            <Grid Margin="5,15,20,40">
+                <Image x:Name="Figure_Screen"                            
+                   Visibility="Collapsed"  
+                   Stretch="Uniform"
+                   Width="68"
+                   Height="68"/>
+            </Grid>
+        </Viewbox >
+
+       
+        <Image x:Name="loading_animation" Visibility="Collapsed" gif:ImageBehavior.AnimatedSource="Images/loading.gif" gif:ImageBehavior.RepeatBehavior="500x" Height="150"  Grid.Row="1"/>
+
+        <TextBlock Text="{Binding PersonName, StringFormat='Who are you?'}" Grid.Row="1" Margin="214,340,203,30.5" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource KinectPurpleBrush}" FontFamily="Segoe UI" FontSize="24" FontStyle="Italic" FontStretch="Expanded" Width="258"/>
+
+        <TextBlock Text="{Binding IdentifyState, StringFormat='None'}" Grid.Row="2" Margin="80,60,10,5" HorizontalAlignment="Center" Foreground="{StaticResource KinectPurpleBrush}" FontFamily="Segoe UI" FontSize="24" FontStyle="Italic" FontStretch="Expanded" Width="380"/>
+
+        <TextBlock Grid.Row="2" Margin="-100,-40,20,10" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="24" Height="32" Width="200">Check State :</TextBlock>
+
+        <Button Grid.Row="0" Style="{StaticResource CheckButton}" Content=" check" Height="30" HorizontalAlignment="Right" Margin="15,10,0,5" Click="CheckButton_Click"  />
+
+        <Button Grid.Row="2" Style="{StaticResource RetryButton}" Content=" Start" Height="100" HorizontalAlignment="left" Margin="15,10,0,5" Click="RetryButton_Click"  />
+
+        <Button Grid.Row="2" Style="{StaticResource ScreenshotButton}" Content=" Join " Height="100" HorizontalAlignment="Right" Margin="0,10,15,0" Click="ScreenshotButton_Click"  />
+
+        <Image  x:Name="number3" Visibility="Collapsed"  Height="150" Width="150"  Source="Images/number3.PNG" Grid.Row ="1"   HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0" />
+
+        <Image  x:Name="number2" Visibility="Collapsed" Height="150" Width="150"  Source="Images/number2.PNG" Grid.Row ="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0" />
+
+        <Image  x:Name="number1" Visibility="Collapsed"  Height="150" Width="150"  Source="Images/number1.png" Grid.Row ="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0" />
+
+        <Image x:Name="Check_icon" Visibility="Collapsed"  Height="150"  Width="150"  Source="Images/checked.png" Grid.Row ="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0" />
+        
+        <StatusBar Grid.Row="2" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}" Height="6" Margin="0,0,0,0.5">
+            <StatusBarItem Content="{Binding StatusText}" />
+        </StatusBar>
+
+    </Grid>
+
+</Window>
