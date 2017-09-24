@@ -34,6 +34,6 @@
 ### The general flow proccess of the code.
 <br>
 <p align="center">
-<img height='300' weight='400' src="https://user-images.githubusercontent.com/20013955/30779684-9f785cdc-a129-11e7-9fc3-647e7126d2ec.PNG" />
+<img height='500' weight='700' src="https://user-images.githubusercontent.com/20013955/30779798-1ac781da-a12d-11e7-99e8-8096fd337375.PNG" />
 </p>
 <br>
